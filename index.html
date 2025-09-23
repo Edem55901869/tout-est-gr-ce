@@ -409,6 +409,12 @@
         .product-img {
             height: 200px;
             overflow: hidden;
+            position: relative;
+            background-color: #f5f5f5;
+        }
+        
+        body.dark-mode .product-img {
+            background-color: #333;
         }
         
         .product-img img {
@@ -619,6 +625,11 @@
             border-radius: 10px;
             overflow: hidden;
             margin-right: 15px;
+            background-color: #f5f5f5;
+        }
+        
+        body.dark-mode .cart-item-img {
+            background-color: #333;
         }
         
         .cart-item-img img {
@@ -815,10 +826,12 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             border: 5px solid #f0f0f0;
             animation: float 6s ease-in-out infinite;
+            background-color: #f5f5f5;
         }
         
         body.dark-mode .circular-image {
             border-color: #444;
+            background-color: #333;
         }
         
         .circular-image img {
@@ -1697,6 +1710,36 @@
                 height: auto;
             }
         }
+        
+        /* Styles pour le lazy loading des images */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        body.dark-mode .image-placeholder {
+            background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+            background-size: 200% 100%;
+        }
+        
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1806,7 +1849,7 @@
             <div class="about-content">
                 <div class="about-img">
                     <div class="circular-image">
-                        <img src="/profilda1.png" alt="À propos">
+                        <img src="/profilda1.png" alt="À propos" loading="lazy">
                     </div>
                 </div>
                 <div class="about-text">
@@ -1839,28 +1882,28 @@
             
             <div class="gallery-container">
                 <div class="gallery-item active">
-                    <img src="/gallerie1.png" alt="Galerie 1">
+                    <img src="/gallerie1.png" alt="Galerie 1" loading="lazy">
                     <div class="gallery-caption">
                         <h3>Pasteur YENOU Paul </h3>
                         <p>Directeur Académique de l'Institut Biblique et Théologique Apostolique du Bénin</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/gallerie2.png" alt="Galerie 2">
+                    <img src="/gallerie2.png" alt="Galerie 2" loading="lazy">
                     <div class="gallery-caption">
                         <h3> Tout est grâce</h3>
                         <p>Ravu de vous revois</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/galerie3.png" alt="Galerie 3">
+                    <img src="/galerie3.png" alt="Galerie 3" loading="lazy">
                     <div class="gallery-caption">
                         <h3> Notification </h3>
                         <p>Pour tout Chrétiens </p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/gallerie4.png" alt="Galerie 4">
+                    <img src="/gallerie4.png" alt="Galerie 4" loading="lazy">
                     <div class="gallery-caption">
                         <h3>Votre avis sur notre site! </h3>
                         <p>Analyses approfondies de situations réelles</p>
@@ -2142,48 +2185,48 @@
             const products = [
                 { id: 1, name: "Dictionnaire de Théologie Pratique", price: 18000, image: "/article1.jpg", category: "dictionary" },
                 { id: 2, name: "Commentaire Biblique Contemporain", price: 25000, image: "/article2.jpg", category: "commentary" },
-                { id: 3, name: "Théologie Systématique ", price: 30000, image: "/article3.jpg", category: "manual" },
+                { id: 3, name: "Théologie Systématique ", price: 20000, image: "/article3.jpg", category: "manual" },
                 { id: 4, name: "Le Dictionnaire de Théologie ", price: 30000, image: "/article4.jpg", category: "dictionary" },
-                { id: 5, name: "Nouveau Commentaire Biblique", price: 30000, image: "/article5.jpg", category: "commentary" },
+                { id: 5, name: "Nouveau Commentaire Biblique", price: 25000, image: "/article5.jpg", category: "commentary" },
                 { id: 6, name: "Dictionnaire de Théologie Biblique", price: 18000, image: "/article6.jpg", category: "dictionary" },
                 { id: 7, name: "Bible d'étude semeur", price: 25000, image: "/article7.jpg", category: "bible" },
                 { id: 8, name: "Bible D'Étude Africain", price: 25000, image: "/article8.jpg", category: "bible" },
                 { id: 9, name: "Commentaire du disciple de toute la Bible", price: 30000, image: "/article9.jpg", category: "commentary" },
                 { id: 10, name: "La Bible Thomson ", price: 17000, image: "/article10.jpg", category: "bible" },
-                { id: 11, name: "Luc,Jean et Actes", price: 15000, image: "/article11.jpg", category: "commentary" },
-                { id: 12, name: "The Holy Bible ( version Goun)", price: 20000, image: "/article12.jpg", category: "bible" },
+                { id: 11, name: "Luc,Jean et Actes", price: 20000, image: "/article11.jpg", category: "commentary" },
+                { id: 12, name: "The Holy Bible ( version Yoruba)", price: 20000, image: "/article12.jpg", category: "bible" },
                 { id: 13, name: "Bible d'Étude Thompson 21", price: 20000, image: "/article13.jpg", category: "bible" },
                 { id: 14, name: "Encyclopédie Biblique", price: 15000, image: "/article14.jpg", category: "dictionary" },
-                { id: 15, name: "La Sainte Bible (Bord doré)", price: 30000, image: "/article15.jpg", category: "bible" },
-                { id: 16, name: "La Sainte Bible (grand format)", price: 35000, image: "/article16.jpg", category: "bible" },
-                { id: 17, name: "La Bible Esprit et Vie", price: 15000, image: "/article17.jpg", category: "bible" },
+                { id: 15, name: "La Sainte Bible (Bord doré)", price: 15000, image: "/article15.jpg", category: "bible" },
+                { id: 16, name: "La Sainte Bible (grand format)", price: 18000, image: "/article16.jpg", category: "bible" },
+                { id: 17, name: "La Bible Esprit et Vie", price: 35000, image: "/article17.jpg", category: "bible" },
                 { id: 18, name: "Les Épîtres de Paul", price: 10000, image: "/article18.jpg", category: "commentary" },
-                { id: 19, name: "Les Épîtres Généraleset l'apocalypse", price: 8000, image: "/article19.jpg", category: "commentary" },
+                { id: 19, name: "Les Épîtres Générales et l'apocalypse", price: 20000, image: "/article19.jpg", category: "commentary" },
                 { id: 20, name: "Atlas de la Bible et de l'Histoire Du Christianisme", price: 10000, image: "/article20.jpg", category: "manual" },
                 { id: 21, name: "Bible et Archéologie ", price: 15000, image: "/article21.jpg", category: "manual" },
-                { id: 22, name: "La Houlette du Berger", price: 1200, image: "/article22.jpg", category: "manual" },
-                { id: 23, name: "MAWUXÓWÉMA", price: 1200, image: "/article23.jpg", category: "manual" },
+                { id: 22, name: "La Houlette du Berger", price: 10000, image: "/article22.jpg", category: "manual" },
+                { id: 23, name: "MAWUXÓWÉMA", price: 6500, image: "/article23.jpg", category: "manual" },
                 { id: 24, name: "Manuel de service pour le Ministère Pastoral", price: 2300, image: "/article24.jpg", category: "manual" },
                 { id: 25, name: "HADJIGBALÉ", price: 2300, image: "/article25.jpg", category: "manual" },
                 { id: 26, name: "Biblia Hebrahica", price: 12000, image: "/article26.jpg", category: "bible" },
                 { id: 27, name: "Nouveau Testament Inter linéaire Grec/français", price: 12000, image: "/article27.jpg", category: "bible" },
                 { id: 28, name: "Manuel de Service du Pasteur ", price: 1500, image: "/article28.jpg", category: "manual" },
                 { id: 29, name: "Manuel du Pasteur ", price: 3000, image: "/article29.jpg", category: "manual" },
-                { id: 30, name: "Louange à Dieu", price: 2000, image: "/article30.jpg", category: "manual" },
+                { id: 30, name: "Louange à Dieu", price: 1500, image: "/article30.jpg", category: "manual" },
                 { id: 31, name: "Tout Le Monde Communique Peu Ponnectent", price: 1500, image: "/article31.jpg", category: "manual" },
-                { id: 32, name: "Les Épîtres de Paul", price: 3000, image: "/article32.jpg", category: "commentary" },
-                { id: 33, name: "Précis de Doctrine Chrétienne ", price: 3000, image: "/article33.jpg", category: "manual" },
+                { id: 32, name: "Les Épîtres de Paul", price: 15000, image: "/article32.jpg", category: "commentary" },
+                { id: 33, name: "Précis de Doctrine Chrétienne ", price: 8000, image: "/article33.jpg", category: "manual" },
                 { id: 34, name: "Les 15 Lois de la pensée inestimable ", price: 8000, image: "/article34.jpg", category: "manual" },
                 { id: 35, name: "Relation d'aide Chrétiens", price: 8000, image: "/article35.jpg", category: "manual" },
                 { id: 36, name: "Pain de comunion ", price: 5000, image: "/article36.jpg", category: "manual" },
-                { id: 37, name: "Huil d'Olive ", price: 5000, image: "/article37.jpg", category: "manual" },
+                { id: 37, name: "Huile d'Olive ", price: 5000, image: "/article37.jpg", category: "manual" },
                 { id: 38, name: "Clochette ", price: 4000, image: "/article38.jpg", category: "manual" },
                 { id: 39, name: "Bible Louis Second", price: 1500, image: "/article39.jpg", category: "bible" },
                 { id: 40, name: "Aucun autre: Découvrir le Dieu de bible", price: 1500, image: "/article40.jpg", category: "bible" },
                 { id: 41, name: "Dans les bras de Dieu ", price: 1500, image: "/article41.jpg", category: "Manuels" }, 
-                { id: 42, name: "Introduction au consulting biblique", price: 5000, image: "/article42.jpg", category: "bible" }, { id: 43, name: "L'écriture seule", price: 2000, image: "/article43.jpg", category: "Manuels" },
+                { id: 42, name: "Introduction au counseling  biblique", price: 5000, image: "/article42.jpg", category: "bible" }, { id: 43, name: "L'écriture seule", price: 2000, image: "/article43.jpg", category: "Manuels" },
                 { id: 44, name: "L'évangile de Paul", price: 1500, image: "/article44.jpg", category: "bible" },
-                { id: 45, name: "La bible avec note d'étude : Vie nouvelle", price: 3000, image: "/article45.jpg", category: "bible" }, { id: 46, name: "La bible déchiffrée", price: 20000, image: "/article46.jpg", category: "bible" },
+                { id: 45, name: "La bible avec note d'étude : Vie nouvelle", price: 30000, image: "/article45.jpg", category: "bible" }, { id: 46, name: "La bible déchiffrée", price: 20000, image: "/article46.jpg", category: "bible" },
                 { id: 47, name: "la bible parole de vie ", price: 5000, image: "/article47.jpg", category: "bible" },
                 { id: 48, name: "la conversion", price: 1500, image: "/article48.jpg", category: "bible" },
                 { id: 49, name: "Un dessein divin", price: 00, image: "/article49.jpg", category: "bible" },
@@ -2218,7 +2261,7 @@
                     productElement.className = 'product';
                     productElement.innerHTML = `
                         <div class="product-img">
-                            <img src="${product.image}" alt="${product.name}">
+                            <img src="${product.image}" alt="${product.name}" loading="lazy" class="lazy-image" onload="this.classList.add('loaded')" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder')">
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">${product.name}</h3>
@@ -2278,6 +2321,24 @@
                         showNotification();
                     });
                 });
+                
+                // Observer pour le lazy loading des images
+                if ('IntersectionObserver' in window) {
+                    const imageObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.src = img.dataset.src;
+                                img.classList.remove('lazy-image');
+                                imageObserver.unobserve(img);
+                            }
+                        });
+                    });
+                    
+                    document.querySelectorAll('img[data-src]').forEach(img => {
+                        imageObserver.observe(img);
+                    });
+                }
             }
             
             // Fonction pour afficher la notification
@@ -2380,7 +2441,7 @@
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
                         <div class="cart-item-img">
-                            <img src="${item.image}" alt="${item.name}">
+                            <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder')">
                         </div>
                         <div class="cart-item-details">
                             <div class="cart-item-title">${item.name}</div>
