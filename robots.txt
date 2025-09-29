@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+
+# Sitemap location
+Sitemap: https://www.toutestgrace.site/sitemap.xml
+
+# Crawl-delay: 1 # Optionnel - ralentit le crawl si nécessaire
