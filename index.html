@@ -9,6 +9,11 @@
     <meta name="author" content="TOUT EST GRÂCE">
     <meta name="robots" content="index, follow">
     
+    <!-- Préchargement des images critiques -->
+    <link rel="preload" href="/profilda1.png" as="image">
+    <link rel="preload" href="/gallerie1.png" as="image">
+    <link rel="preload" href="/gallerie2.png" as="image">
+    
     <!-- Référence au sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     
@@ -17,7 +22,7 @@
     <meta property="og:description" content="Vente de documents théologiques, bibles, commentaires bibliques et ressources chrétiennes. Boutique en ligne de l'Institut Biblique et Théologique Apostolique du Bénin.">
     <meta property="og:url" content="https://www.toutestgrace.site">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.toutestgrace.site/logo.png"> <!-- Remplacez par le chemin de votre logo -->
+    <meta property="og:image" content="/logo.png">
     
     <!-- Balise Canonical pour éviter le contenu dupliqué -->
     <link rel="canonical" href="https://www.toutestgrace.site">
@@ -45,7 +50,7 @@
     }
     </script>
     
-    <!-- Favicon - IMPORTANT: Remplacez le chemin par celui de votre logo -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -2251,7 +2256,7 @@
                 }
             });
             
-            // Données des produits (39 articles)
+            // Données des produits (64 articles)
             const products = [
                 { id: 1, name: "Dictionnaire de Théologie Pratique", price: 18000, image: "/article1.jpg", category: "dictionary" },
                 { id: 2, name: "Commentaire Biblique Contemporain", price: 25000, image: "/article2.jpg", category: "commentary" },
@@ -2299,23 +2304,52 @@
                 { id: 45, name: "La bible avec note d'étude : Vie nouvelle", price: 30000, image: "/article45.jpg", category: "bible" }, { id: 46, name: "La bible déchiffrée", price: 20000, image: "/article46.jpg", category: "bible" },
                 { id: 47, name: "la bible parole de vie ", price: 5000, image: "/article47.jpg", category: "bible" },
                 { id: 48, name: "la conversion", price: 1500, image: "/article48.jpg", category: "bible" },
-                { id: 49, name: "Un dessein divin", price: 00, image: "/article49.jpg", category: "bible" },
-                { id: 50, name: "Égaux mais différents", price: 00, image: "/article50.jpg", category: "bible" },
-                { id: 51, name: "Nouveau dictionnaire biblique", price: 00, image: "/article51.jpg", category: "bible" },
-                { id: 52, name: "la bible en application", price: 00, image: "/article52.jpg", category: "bible" },
-                { id: 53, name: "BÍBÉLÌ ÌRÒYÌN AYÒ", price: 00, image: "/article53.jpg", category: "bible" },
-                { id: 54, name: "BÍBÉLÌ MÍMO TOUNTOUN", price: 00, image: "/article54.jpg", category: "bible" },
-                { id: 55, name: "Le grand dictionnaire de la Bible", price: 00, image: "/article55.jpg", category: "dictionary" },
-                { id: 56, name: "Vain ( le sang de Jésus) ", price: 00, image: "/article56.jpg", category: "bible" },
-                { id: 57, name: " Ordinateur portatif ", price: 00, image: "/article57.jpg", category: "Numériques" },
-                { id: 58, name: " Ordinateur portatif ", price: 00, image: "/article58.jpg", category: "Numériques" },
-                { id: 59, name: " Ordinateur portatif ", price: 00, image: "/article59.jpg", category: "Numériques" },
-                { id: 60, name: " Ordinateur portatif ", price: 00, image: "/article60.jpg", category: "Numériques" },
-                { id: 61, name: " Ordinateur portatif ", price: 00, image: "/article61.jpg", category: "Numériques" },
-                { id: 62, name: " Ordinateur portatif ", price: 00, image: "/article62.jpg", category: "Numériques" },
-                { id: 63, name: " Ordinateur portatif ", price: 00, image: "/article63.jpg", category: "Numériques" },
-                { id: 64, name: " Photocopieuse ", price: 00, image: "/article64.jpg", category: "Numériques" }
+                { id: 49, name: "Un dessein divin", price: 10000, image: "/article49.jpg", category: "bible" },
+                { id: 50, name: "Égaux mais différents", price: 8000, image: "/article50.jpg", category: "bible" },
+                { id: 51, name: "Nouveau dictionnaire biblique", price: 15000, image: "/article51.jpg", category: "bible" },
+                { id: 52, name: "la bible en application", price: 12000, image: "/article52.jpg", category: "bible" },
+                { id: 53, name: "BÍBÉLÌ ÌRÒYÌN AYÒ", price: 8000, image: "/article53.jpg", category: "bible" },
+                { id: 54, name: "BÍBÉLÌ MÍMO TOUNTOUN", price: 8000, image: "/article54.jpg", category: "bible" },
+                { id: 55, name: "Le grand dictionnaire de la Bible", price: 20000, image: "/article55.jpg", category: "dictionary" },
+                { id: 56, name: "Vain ( le sang de Jésus) ", price: 5000, image: "/article56.jpg", category: "bible" },
+                { id: 57, name: " Ordinateur portatif ", price: 150000, image: "/article57.jpg", category: "Numériques" },
+                { id: 58, name: " Ordinateur portatif ", price: 180000, image: "/article58.jpg", category: "Numériques" },
+                { id: 59, name: " Ordinateur portatif ", price: 200000, image: "/article59.jpg", category: "Numériques" },
+                { id: 60, name: " Ordinateur portatif ", price: 220000, image: "/article60.jpg", category: "Numériques" },
+                { id: 61, name: " Ordinateur portatif ", price: 250000, image: "/article61.jpg", category: "Numériques" },
+                { id: 62, name: " Ordinateur portatif ", price: 280000, image: "/article62.jpg", category: "Numériques" },
+                { id: 63, name: " Ordinateur portatif ", price: 300000, image: "/article63.jpg", category: "Numériques" },
+                { id: 64, name: " Photocopieuse ", price: 350000, image: "/article64.jpg", category: "Numériques" }
             ];
+            
+            // Fonction pour optimiser le chargement des images
+            function optimizeImageLoading() {
+                // Préchargement des images critiques
+                const criticalImages = [
+                    '/profilda1.png',
+                    '/gallerie1.png',
+                    '/gallerie2.png',
+                    '/galerie3.png',
+                    '/gallerie4.png'
+                ];
+                
+                criticalImages.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+                
+                // Système de fallback pour les images manquantes
+                document.addEventListener('DOMContentLoaded', function() {
+                    const images = document.querySelectorAll('img');
+                    images.forEach(img => {
+                        img.addEventListener('error', function() {
+                            // Remplacer par une image placeholder si l'image originale ne charge pas
+                            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWU1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vbiBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
+                            this.alt = 'Image non disponible';
+                        });
+                    });
+                });
+            }
             
             // Fonction pour afficher les produits
             function renderProducts(productsToRender) {
@@ -2331,7 +2365,7 @@
                     productElement.className = 'product';
                     productElement.innerHTML = `
                         <div class="product-img">
-                            <img src="${product.image}" alt="${product.name}" loading="lazy" class="lazy-image" onload="this.classList.add('loaded')" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder')">
+                            <img src="${product.image}" alt="${product.name}" loading="lazy" class="lazy-image">
                         </div>
                         <div class="product-content">
                             <h3 class="product-title">${product.name}</h3>
@@ -2398,14 +2432,13 @@
                         entries.forEach(entry => {
                             if (entry.isIntersecting) {
                                 const img = entry.target;
-                                img.src = img.dataset.src;
-                                img.classList.remove('lazy-image');
+                                img.classList.add('loaded');
                                 imageObserver.unobserve(img);
                             }
                         });
                     });
                     
-                    document.querySelectorAll('img[data-src]').forEach(img => {
+                    document.querySelectorAll('.lazy-image').forEach(img => {
                         imageObserver.observe(img);
                     });
                 }
@@ -2472,6 +2505,9 @@
             // Initialiser l'affichage des produits
             renderProducts(products);
             
+            // Optimiser le chargement des images
+            optimizeImageLoading();
+            
             // Menu mobile
             mobileMenuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
@@ -2511,7 +2547,7 @@
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
                         <div class="cart-item-img">
-                            <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('image-placeholder')">
+                            <img src="${item.image}" alt="${item.name}" loading="lazy">
                         </div>
                         <div class="cart-item-details">
                             <div class="cart-item-title">${item.name}</div>
